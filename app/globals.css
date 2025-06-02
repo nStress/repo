@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 3, 17, 34;
+    --background-end-rgb: 3, 17, 34;
+    
+    --background: 220 33% 7%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 155 100% 50%;
+    --primary-foreground: 222 47% 10%;
+    
+    --secondary: 196 100% 50%;
+    --secondary-foreground: 222 47% 10%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 169 100% 50%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 169 100% 50%;
+    
+    --chart-1: 155 100% 50%;
+    --chart-2: 196 100% 50%;
+    --chart-3: 169 100% 50%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(
+      circle at center,
+      hsl(var(--background)) 0%,
+      hsl(222, 47%, 5%) 100%
+    );
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-orbitron);
+  }
+  
+  p, span, div, button, a {
+    font-family: var(--font-inter);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--primary) / 50%),
+                 0 0 20px hsl(var(--primary) / 30%),
+                 0 0 30px hsl(var(--primary) / 10%);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 10px hsl(var(--secondary) / 50%),
+                 0 0 20px hsl(var(--secondary) / 30%),
+                 0 0 30px hsl(var(--secondary) / 10%);
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 5px hsl(var(--primary) / 50%),
+                0 0 10px hsl(var(--primary) / 30%),
+                0 0 15px hsl(var(--primary) / 10%);
+  }
+  
+  .neon-border-blue {
+    box-shadow: 0 0 5px hsl(var(--secondary) / 50%),
+                0 0 10px hsl(var(--secondary) / 30%),
+                0 0 15px hsl(var(--secondary) / 10%);
+  }
+  
+  .glass {
+    background: rgba(3, 17, 34, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 5px hsl(var(--primary) / 30%),
+                  0 0 10px hsl(var(--primary) / 20%);
+    }
+    to {
+      box-shadow: 0 0 10px hsl(var(--primary) / 50%),
+                  0 0 20px hsl(var(--primary) / 30%),
+                  0 0 30px hsl(var(--primary) / 10%);
+    }
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .hover-flip:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
